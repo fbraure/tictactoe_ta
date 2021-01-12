@@ -1,0 +1,9 @@
+<%if my_case.value == 1 %>
+  <div class="case opened" data-row=<%=my_case.row%> data-col=<%=my_case.col%> >X</div>
+<% elsif my_case.value == -1 %>
+  <div class="case opened"  data-row=<%=my_case.row%> data-col=<%=my_case.col%>>O</div>
+<% else %>
+  <%= link_to case_path(my_case), remote: true, method: :patch do %>
+    <div class="case"  data-row=<%=my_case.row%> data-col=<%=my_case.col%>></div>
+  <% end %>
+<% end %>

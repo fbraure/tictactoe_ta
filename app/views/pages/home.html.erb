@@ -1,0 +1,19 @@
+<h1>Bien le bonjour <%= @current_user.nickname %></h1>
+<h2>Win :<%= @games_won.count %> / <%= @games.count %></h2>
+<div class="container">
+  <div id="tictactable">
+    <% 3.times do |row| %>
+      <div data-row=<%=row%> class="d-flex align-items-center">
+      <% 3.times do |col| %>
+        <div data-col=<%=col%> class="">
+          <%= render '/cases/show', my_case: @cases[(row)*3 + col] %>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+    <% unless @winner.nil? %> Bien joué <%= @winner.nickname %> <% end %>
+  <div>
+  </div>
+  <%= link_to "New Game", games_path(params: {winner: @winner}), remote: true, method: :post, class: "btn btn-primary" %>
+</div>
